@@ -1,4 +1,8 @@
 window.onload = function(){
+    var gameSettings = {
+        playerSpeed: 200,
+    }
+
     var config = {
         width: 256,
         height: 272,
@@ -12,5 +16,5 @@ window.onload = function(){
             }
         }
     }
-    var game =new Phaser.Game(config);
+    var game = new Phaser.Game(config);
 }
