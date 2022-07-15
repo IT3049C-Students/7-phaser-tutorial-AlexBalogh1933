@@ -7,9 +7,45 @@ class Scene2 extends Phaser.Scene {
         this.background = this.add.titleSprite(0, 0, config.width, config.height, "background");
         this.background.setOrigin(0,0);
 
-        this.ship1 = this.add.image(config.width/2 - 50, config.height/2, "ship");
-        this.ship2 = this.add.image(config.width/2, config.height/2, "ship2");
-        this.ship3 = this.add.image(config.width/2 + 50, config.height/2, "ship3");
+        this.ship1 = this.add.sprite(config.width/2 - 50, config.height/2, "ship");
+        this.ship2 = this.add.sprite(config.width/2, config.height/2, "ship2");
+        this.ship3 = this.add.sprite(config.width/2 + 50, config.height/2, "ship3");
+
+        this.anims.create({
+            key: "ship1_anim",
+            frames: this.anims.generateFrameNumers("ship"),
+            frameRate: 20,
+            repeat: -1
+        });
+        this.anims.create({
+            key: "ship2_anim",
+            frames: this.anims.generateFrameNumers("ship2"),
+            frameRate: 20,
+            repeat: -1
+        });
+        this.anims.create({
+            key: "ship3_anim",
+            frames: this.anims.generateFrameNumers("ship3"),
+            frameRate: 20,
+            repeat: -1
+        });
+        this.anims.create({
+            key: "explode",
+            frames: this.anims.generateFrameNumers("explosion"),
+            frameRate: 20,
+            repeat: 0,
+            hideOnComplete: true
+        });
+
+        this.ship1.play("ship1_anim");
+        this.ship1.play("ship2_anim");
+        this.ship1.play("ship3_anim");
+
+        this.ship1.setInteractive();
+        this.ship2.setInteractive();
+        this.ship3.setInteractive();
+
+        this.input.on('gameobjectdown', this.destroyShip, this);
 
         this.add.text(20, 20, "Playing game", {font: "25px Arial", fill: "yellow"});
     }
@@ -33,6 +69,11 @@ class Scene2 extends Phaser.Scene {
         ship.y = 0;
         var randomX = Phaser.Math.Between(0, config.width);
         ship.x = randomX;
+    }
+
+    destroyShip(pointer, gameObject) {
+        gameObject.setTextrue("explosion");
+        gameObject.play("explode");
     }
 
 }
