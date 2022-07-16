@@ -12,4 +12,4 @@ how many points out of 20 do you deserve on this assignment:
 ## Self-Reflection:
 I was trying to do the npm install http-server but it seemed to do nothing. I also tried to use the Web Server Chrome extension and it also did not do anything. I couldn't select a folder it just would sit there. 
 ### How long it took me to finish this?
-4 hours Part 1-7
+6 hours
